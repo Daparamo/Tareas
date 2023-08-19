@@ -1,7 +1,7 @@
 <ion-content>
   <app-header title="Tareas"></app-header>
 
-  <div [class]="tasks.length >= 2 ? 'content' : 'content-full'">
+  <div [class]="!desktop && tasks.length >= 2 ? 'content-full' : 'content'">
 
     <ion-button (click)="addOrUpdateTask()" class="ion-margin" mode="ios">
       Nueva Tarea

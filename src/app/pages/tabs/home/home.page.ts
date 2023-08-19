@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { Task } from 'src/app/models/task.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -16,12 +17,15 @@ export class HomePage implements OnInit {
   user = {} as User;
   tasks: Task[] = [];
   loading:boolean =false;
+  desktop:boolean = false;
   constructor(
     private firebaseSvc: FirebaseService,
-    private utilsSvc: UtilsService
+    private utilsSvc: UtilsService,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
+    this.desktop = this.platform.is("desktop");
     //this.addOrUpdateTask(this.tasks[0]);
   }
 
